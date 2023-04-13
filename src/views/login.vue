@@ -18,7 +18,7 @@
           </el-form-item>
           <div class="login-btn">
             <el-button type="primary" @click="submitForm()" :loading="loading">登录</el-button>
-            <span>还未拥有账户？<router-link to="/register">点击注册</router-link></span>
+            <div class="register_btn">还未拥有账户？<router-link to="/register">点击注册</router-link></div>
           </div>
         </el-form>
       </div>
@@ -73,8 +73,8 @@ export default {
   position: relative;
   //width: 100vw;
   height: 100vh;
-  //background: url('@assets/login_bg.jpg') no-repeat;
-  //background-size: 100% 100%;
+  background: url('@img/login.png') no-repeat;
+  background-size: 100% 100%;
 
   .login_box{
     position: absolute;
@@ -82,8 +82,9 @@ export default {
     right: 20%;
     width: 400px;
     overflow: hidden;
-    background-color: #c91919;
+    background-color: rgba(12, 75, 93,0.8);
     border-radius: 5px;
+    //opacity: 0.8;
 
     .title{
       margin: auto;
@@ -97,9 +98,12 @@ export default {
       color: #333333;
       font-size: 26px;
       font-weight: 500;
-      letter-spacing: 2px;
+      letter-spacing: 5px;
       strong {
-        font: italic 1em Georgia, serif;
+        font-weight: 600;
+        font-size: 26px;
+        color: rgb(255, 255, 255);
+        //font: italic 1em Georgia, serif;
       }
     }
     .form{
@@ -113,6 +117,21 @@ export default {
         margin-top: 5px;
         margin-bottom: 15px;
         letter-spacing: 10px;
+      }
+      .register_btn{
+        width: 100%;
+        margin: 5px 0 10px;
+        text-align: center;
+        color: white;
+
+        a{
+          color: white;
+          text-decoration: none;
+
+          &:hover{
+            color: gray;
+          }
+        }
       }
     }
   }

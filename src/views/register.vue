@@ -17,27 +17,27 @@
         </el-form-item>
         <el-form-item prop="nickname">
           <el-input placeholder="请输入昵称" v-model="param.nickname">
-            <i class="el-icon-lock el-input__icon" slot="prefix"></i>
+            <i class="el-icon-s-custom el-input__icon" slot="prefix"></i>
           </el-input>
         </el-form-item>
         <el-form-item prop="email">
           <el-input placeholder="请输入邮箱" v-model="param.email">
-            <i class="el-icon-lock el-input__icon" slot="prefix"></i>
+            <i class="el-icon-discover el-input__icon" slot="prefix"></i>
           </el-input>
         </el-form-item>
         <el-form-item prop="Phone">
           <el-input placeholder="请输入电话" v-model="param.Phone">
-            <i class="el-icon-lock el-input__icon" slot="prefix"></i>
+            <i class="el-icon-phone el-input__icon" slot="prefix"></i>
           </el-input>
         </el-form-item>
         <el-form-item prop="address">
           <el-input placeholder="请输入地址" v-model="param.address" @keyup.enter.native="submitForm()">
-            <i class="el-icon-lock el-input__icon" slot="prefix"></i>
+            <i class="el-icon-position el-input__icon" slot="prefix"></i>
           </el-input>
         </el-form-item>
-        <div class="login-btn">
-          <el-button type="primary" @click="submitForm()" :loading="loading">清空</el-button>
-          <el-button type="primary" @click="submitForm()" :loading="loading">注册</el-button>
+        <div class="register_btn">
+          <el-button @click="clearedForm()" :loading="loading">清空</el-button>
+          <el-button @click="submitForm()" :loading="loading">注册</el-button>
         </div>
       </el-form>
     </div>
@@ -70,6 +70,16 @@ export default {
     }
   },
   methods:{
+    clearedForm(){
+      this.param={
+        username: "",
+        password: "",
+        nickname:"",
+        email:"",
+        Phone:"",
+        address:""
+      }
+    },
     submitForm(){
       this.$refs.login.validate((valid) => {
         if(valid){
@@ -98,22 +108,59 @@ export default {
 <style scoped lang="scss">
 .register{
   position: relative;
-  width: 100%;
   height: 100vh;
+  background: url('@img/register.jpg') no-repeat;
+  background-size: 100% 100%;
 
   .register_box{
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
-    width: 350px;
+    width: 400px;
     height: 500px;
-    background-color: red;
-    border-radius: 5px;
+    background-color: rgba(112, 71, 43,0.8);
+    border-radius: 10px;
+
+    .title{
+      margin: auto;
+      width: 70%;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      line-height: 35px;
+      font-size: 26px;
+      font-weight: 500;
+      letter-spacing: 5px;
+
+      strong {
+        font-weight: 600;
+        font-size: 26px;
+        color: rgb(255, 255, 255);
+        //font: italic 1em Georgia, serif;
+      }
+    }
 
     .form{
-      margin: 20px auto 0;
+      margin: auto;
       width: 70%;
+
+      .register_btn{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        button{
+          padding: 0;
+          font-size: 16px;
+          width: 80px;
+          height: 30px;
+          line-height: 30px;
+          &:hover{
+            color: gray;
+          }
+        }
+      }
     }
   }
 }
